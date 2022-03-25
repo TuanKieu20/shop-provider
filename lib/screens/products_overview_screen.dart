@@ -77,10 +77,7 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
                   color: Colors.black,
                   size: 26,
                 ),
-                onPressed: () {
-                  Provider.of<Products>(context, listen: false)
-                      .getAllDataOfCategories();
-                },
+                onPressed: () {},
               ),
             ),
             Consumer<Cart>(

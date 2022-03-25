@@ -3,8 +3,6 @@ import 'package:provider/provider.dart';
 import 'package:shop_provider/provider/products.dart';
 import 'package:shop_provider/widgets/product_item.dart';
 
-import '../provider/product.dart';
-
 class SearchScreen extends StatefulWidget {
   static const routeName = '/search-screen';
 
@@ -15,39 +13,25 @@ class SearchScreen extends StatefulWidget {
 }
 
 class _SearchScreenState extends State<SearchScreen> {
-  bool _isInit = true;
-  bool _isLoading = false;
-
+  final TextEditingController _controller = TextEditingController();
   @override
   void didChangeDependencies() {
     final productsData = Provider.of<Products>(context);
+    productsData.setItems = productsData.items;
 
-    if (_isInit) {
-      setState(() {
-        _isLoading = true;
-      });
-      Provider.of<Products>(context, listen: false)
-          .getAllDataOfCategories()
-          .then((_) {
-        setState(() {
-          _isLoading = false;
-        });
-      });
-      productsData.setItems = productsData.items;
-    }
-    _isInit = false;
     super.didChangeDependencies();
   }
 
   @override
   void dispose() {
-    Provider.of<Products>(context, listen: false).cleanItems();
+    _controller.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     final productsData = Provider.of<Products>(context);
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white10,
@@ -56,7 +40,7 @@ class _SearchScreenState extends State<SearchScreen> {
         leading: IconButton(
           onPressed: () {
             // Navigator.of(context).dispose();
-            Navigator.of(context).pop();
+            Navigator.of(context).popAndPushNamed('/');
           },
           icon: const Icon(
             Icons.arrow_back_ios,
@@ -88,6 +72,7 @@ class _SearchScreenState extends State<SearchScreen> {
                 color: Colors.grey.withOpacity(0.6),
               ),
               child: TextField(
+                controller: _controller,
                 decoration: const InputDecoration(
                   contentPadding: EdgeInsets.symmetric(vertical: 20),
                   border: InputBorder.none,
@@ -98,10 +83,10 @@ class _SearchScreenState extends State<SearchScreen> {
                   Provider.of<Products>(context, listen: false)
                       .filterProduct(value);
                 },
-                // onSubmitted: (value) {
-                //   Provider.of<Products>(context, listen: false)
-                //       .filterProduct(value);
-                // },
+                onSubmitted: (value) {
+                  Provider.of<Products>(context, listen: false)
+                      .filterProduct(value);
+                },
               ),
             ),
             Expanded(

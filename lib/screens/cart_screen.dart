@@ -43,42 +43,51 @@ class CartScreen extends StatelessWidget {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          // Card(
-          //   margin: const EdgeInsets.all(15),
-          //   child: Padding(
-          //     padding: const EdgeInsets.all(8.0),
-          //     child: Row(
-          //       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          //       children: <Widget>[
-          //         const Text("Total", style: TextStyle(fontSize: 20)),
-          //         const Spacer(),
-          //         Chip(
-          //           label: Text("\$${cart.amountCart.toStringAsFixed(2)}"),
-          //           backgroundColor: Colors.purple,
-          //         ),
-          //         OrderButton(cart: cart)
-          //       ],
-          //     ),
-          //   ),
-          // ),
           const SizedBox(height: 10),
           Expanded(
-            child: ListView.builder(
-              itemCount: cart.items.length,
-              itemBuilder: (ctx, i) => CartItem(
-                id: cart.items.values.toList()[i].id,
-                productId: cart.items.keys.toList()[i],
-                title: cart.items.values.toList()[i].title,
-                price: cart.items.values.toList()[i].price,
-                quantity: cart.items.values.toList()[i].quantity,
-                imageUrl: cart.items.values.toList()[i].imageUrl!,
-              ),
-            ),
+            child: cart.items.isEmpty
+                ? Column(
+                    children: [
+                      Center(
+                        child: Image.asset(
+                          'assets/images/Women Power Mobile.png',
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                      const SizedBox(height: 30),
+                      const Text(
+                        'Your cart is empty',
+                        style: TextStyle(
+                            fontSize: 32,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black),
+                      ),
+                      const SizedBox(height: 10),
+                      const Text(
+                        'Please add items, what you like !',
+                        style: TextStyle(
+                            fontSize: 24,
+                            fontWeight: FontWeight.normal,
+                            color: Colors.grey),
+                      ),
+                    ],
+                  )
+                : ListView.builder(
+                    itemCount: cart.items.length,
+                    itemBuilder: (ctx, i) => CartItem(
+                      id: cart.items.values.toList()[i].id,
+                      productId: cart.items.keys.toList()[i],
+                      title: cart.items.values.toList()[i].title,
+                      price: cart.items.values.toList()[i].price,
+                      quantity: cart.items.values.toList()[i].quantity,
+                      imageUrl: cart.items.values.toList()[i].imageUrl!,
+                    ),
+                  ),
           ),
         ],
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-      floatingActionButton: OrderButton(cart: cart),
+      floatingActionButton: cart.items.isEmpty ? null : OrderButton(cart: cart),
     );
   }
 }
@@ -133,45 +142,3 @@ class _OrderButtonState extends State<OrderButton> {
     );
   }
 }
-
-// floatingActionButton: GestureDetector(
-//           onTap: () {
-//             Provider.of<Cart>(context, listen: false).addItem(
-//                 loadedProduct.id,
-//                 loadedProduct.title,
-//                 loadedProduct.price,
-//                 loadedProduct.imageUrl);
-//             ScaffoldMessenger.of(context).hideCurrentSnackBar();
-//             ScaffoldMessenger.of(context).showSnackBar(
-//               SnackBar(
-//                 content: const Text(
-//                   "Added item to cart",
-//                 ),
-//                 duration: const Duration(seconds: 2),
-//                 action: SnackBarAction(
-//                   label: "UNDO",
-//                   onPressed: () {
-//                     Provider.of<Cart>(context, listen: false)
-//                         .removeSingleItem(loadedProduct.id);
-//                   },
-//                 ),
-//               ),
-//             );
-//           },
-        //   child: Container(
-        //       margin: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
-        //       width: double.infinity,
-        //       height: 50,
-        //       alignment: Alignment.center,
-        //       decoration: BoxDecoration(
-        //         borderRadius: BorderRadius.circular(30),
-        //         color: Colors.black,
-        //       ),
-        //       child: const Text(
-        //         'ADD TO CART',
-        //         style: TextStyle(
-        //             fontSize: 18,
-        //             color: Colors.white,
-        //             fontWeight: FontWeight.bold),
-        //       )),
-        // ),

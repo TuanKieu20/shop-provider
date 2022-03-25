@@ -75,12 +75,39 @@ class _OrderScreenState extends State<OrderScreen> {
                   );
                 } else {
                   return Consumer<Orders>(
-                    builder: (ctx, orderData, child) => ListView.builder(
-                      itemCount: orderData.orders.length,
-                      itemBuilder: (ctx, i) => OrderItem(
-                        orderData.orders[i],
-                      ),
-                    ),
+                    builder: (ctx, orderData, child) => orderData.orders.isEmpty
+                        ? Column(
+                            children: [
+                              Center(
+                                child: Image.asset(
+                                  'assets/images/Women Power Mobile.png',
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
+                              const SizedBox(height: 30),
+                              const Text(
+                                'Your order is empty',
+                                style: TextStyle(
+                                    fontSize: 32,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.black),
+                              ),
+                              const SizedBox(height: 10),
+                              const Text(
+                                'Please go to home screen to add items, what you like !',
+                                style: TextStyle(
+                                    fontSize: 24,
+                                    fontWeight: FontWeight.normal,
+                                    color: Colors.grey),
+                              ),
+                            ],
+                          )
+                        : ListView.builder(
+                            itemCount: orderData.orders.length,
+                            itemBuilder: (ctx, i) => OrderItem(
+                              orderData.orders[i],
+                            ),
+                          ),
                   );
                 }
               }

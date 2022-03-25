@@ -138,10 +138,7 @@ class AuthScreen extends StatelessWidget {
                     ),
                     const SizedBox(width: 40),
                     InkWell(
-                      onTap: () {
-                        Provider.of<Products>(context, listen: false)
-                            .getAllDataOfCategories();
-                      },
+                      onTap: () {},
                       child: Image.asset('assets/images/Apple Logo.png'),
                     )
                   ],

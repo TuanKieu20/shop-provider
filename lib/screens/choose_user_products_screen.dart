@@ -45,67 +45,6 @@ class ChooseUserProductsScreen extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 20),
           child: Column(
             children: <Widget>[
-              // InkWell(
-              //   onTap: () {
-              //     Navigator.of(context).pushNamed(UserProductScreen.routeName,
-              //         arguments: 'products');
-              //   },
-              //   child: Container(
-              //     decoration: BoxDecoration(
-              //       color: Colors.grey[200],
-              //       borderRadius: BorderRadius.circular(20),
-              //     ),
-              //     width: double.infinity,
-              //     child: Padding(
-              //       padding: const EdgeInsets.symmetric(vertical: 12),
-              //       child: Row(
-              //         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              //         children: const [
-              //           Text(
-              //             'Products products',
-              //             style: TextStyle(
-              //               fontSize: 30,
-              //               fontWeight: FontWeight.w700,
-              //             ),
-              //             textAlign: TextAlign.center,
-              //           ),
-              //           Icon(Icons.near_me, size: 30)
-              //         ],
-              //       ),
-              //     ),
-              //   ),
-              // ),
-              // const SizedBox(height: 20),
-              // InkWell(
-              //   onTap: () {
-              //     Navigator.of(context).pushNamed(UserProductScreen.routeName,
-              //         arguments: 'productsMen');
-              //   },
-              //   child: Container(
-              //     decoration: BoxDecoration(
-              //       color: Colors.grey[200],
-              //       borderRadius: BorderRadius.circular(20),
-              //     ),
-              //     width: double.infinity,
-              //     child: Padding(
-              //       padding: const EdgeInsets.symmetric(vertical: 12),
-              //       child: Row(
-              //         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              //         children: const [
-              //           Text(
-              //             'Products productsMen',
-              //             style: TextStyle(
-              //               fontSize: 30,
-              //               fontWeight: FontWeight.w700,
-              //             ),
-              //             textAlign: TextAlign.center,
-              //           ),
-              //           Icon(Icons.near_me, size: 30)
-              //         ],
-              //       ),
-              //     ),
-              //   ),
-              // ),
               ButtonChooseUser(arg: 'products', textArg: 'Products Products'),
               ButtonChooseUser(arg: 'productsMen', textArg: 'Products Men'),
               ButtonChooseUser(arg: 'productsWoman', textArg: 'Products Woman'),
