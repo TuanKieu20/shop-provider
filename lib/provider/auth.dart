@@ -134,6 +134,7 @@ class Auth with ChangeNotifier {
     _token = null;
     _expiryDate = null;
     GoogleSignIn().signOut();
+    FacebookAuth.instance.logOut();
     if (_autoTimer != null) {
       _autoTimer!.cancel();
       _autoTimer = null;

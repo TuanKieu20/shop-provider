@@ -209,37 +209,73 @@ class Products with ChangeNotifier {
     existingProduct = null;
   }
 
-  Future<void> getAllDataOfCategories() async {
-    List<Product> products = [];
-
-    // products = await _returnData('productsMen');
-    await fetchData('productsMen', false);
-    for (var product in _items) {
-      products.add(product);
+  Future<List<Product>> _getData(String category) async {
+    var url =
+        'https://shop-21e6b-default-rtdb.firebaseio.com/$category.json?auth=$_authToken';
+    var uri = Uri.parse(url);
+    try {
+      final response = await http.get(uri);
+      final extratedData = json.decode(response.body);
+      if (extratedData == null) {
+        return [];
+      }
+      extratedData as Map<String, dynamic>;
+      uri = Uri.parse(
+          'https://shop-21e6b-default-rtdb.firebaseio.com/userFavorites/$_userId.json?auth=$_authToken');
+      final favoriteResponse = await http.get(uri);
+      final favoriteData = json.decode(favoriteResponse.body);
+      final List<Product> loadedProducts = [];
+      extratedData.forEach((prodId, prodData) {
+        loadedProducts.add(
+          Product(
+              id: prodId,
+              title: prodData['title'],
+              description: prodData['description'],
+              imageUrl: prodData['imageUrl'],
+              price: prodData['price'],
+              images: prodData['urls'] == null
+                  ? []
+                  : prodData['urls'] as List<dynamic>,
+              isFavorite:
+                  favoriteData == null ? false : favoriteData[prodId] ?? false),
+        );
+      });
+      return loadedProducts;
+    } catch (error) {
+      rethrow;
     }
-    await fetchData('productsWoman', false);
-    for (var product in _items) {
-      products.add(product);
-    }
-    await fetchData('products', false);
-    for (var product in _items) {
-      products.add(product);
-    }
-    await fetchData('productsSale', false);
-    for (var product in _items) {
-      products.add(product);
-    }
-
-    _items = products;
-    notifyListeners();
   }
+
+  // Future<void> getAllDataOfCategories() async {
+  //   List<Product> products = [];
+
+  //   // products = await _returnData('productsMen');
+  //   await fetchData('productsMen', false);
+  //   for (var product in _items) {
+  //     products.add(product);
+  //   }
+  //   await fetchData('productsWoman', false);
+  //   for (var product in _items) {
+  //     products.add(product);
+  //   }
+  //   await fetchData('products', false);
+  //   for (var product in _items) {
+  //     products.add(product);
+  //   }
+  //   await fetchData('productsSale', false);
+  //   for (var product in _items) {
+  //     products.add(product);
+  //   }
+
+  //   _items = products;
+  //   notifyListeners();
+  // }
 
   void filterProduct(String value) {
     _listDataFilter = [];
     notifyListeners();
     for (var e in _items) {
       if (e.title.contains(value)) {
-        print(e.title);
         _listDataFilter.add(e);
       }
     }
