@@ -47,4 +47,15 @@
     <tr>
 </table>
 
+<table border>
+    <tr>
+        <th style="text-align:center">Add Product</th>
+    </tr>
+    <tr>
+        <td><img src="./screenshot/z3479277889097_c5524e8c7c8da2f19f484035bfb1a9a6.jpg" alt="" width="200"></td>
+
+    <tr>
+</table>
+
+
 
