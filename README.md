@@ -1,16 +1,50 @@
-# shop_provider
+# Shop Provider | TuanKieu
 
-A new Flutter project.
+## Flutter
 
-## Getting Started
+- Flutter provider
+- firebase
+- http
+- 
+## Screenshots
 
-This project is a starting point for a Flutter application.
+<table border>
+    <tr>
+        <th style="text-align:center">Login</th>
+        <th style="text-align:center">Register</th>
+        <th style="text-align:center">Home</th>
+    </tr>
+    <tr>
+        <td><img src="./screenshot/z3477005652052_b80c401e22ec96d22cc69e7b69b15795.jpg" alt="" width="200"></td>
+        <td><img src="./screenshot/z3477005668928_0b4ff2cd275bf12b3dfa9ced0330ec7a.jpg" alt="" width="200"></td>
+        <td><img src="./screenshot/z3477005668647_d596ee8d461664f9a89cd06e12a5b48d.jpg" alt="" width="200"></td>
+    <tr>
+</table>
 
-A few resources to get you started if this is your first Flutter project:
+<table border>
+    <tr>
+        <th style="text-align:center">Home</th>
+        <th style="text-align:center">Search Product</th>
+        <th style="text-align:center">Order</th>
+    </tr>
+    <tr>
+        <td><img src="./screenshot/z3477005674052_58474d2b3329878bff9f2d18ea3929bf.jpg" alt="" width="200"></td>
+        <td><img src="./screenshot/z3477005696811_6145838a0cbeb3b0d276b0c7f116f804.jpg" alt="" width="200"></td>
+        <td><img src="./screenshot/z3477005699905_f42a7cf2b178b60ca7e4de5c7c325623.jpg" alt="" width="200"></td>
+    <tr>
+</table>
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+<table border>
+    <tr>
+        <th style="text-align:center">Cart</th>
+        <th style="text-align:center">Order</th>
+        <th style="text-align:center">Cart</th>
+    </tr>
+    <tr>
+        <td><img src="./screenshot/z3477005703850_1f46d0da8a9258a8937b7b2d4d0cd208.jpg" alt="" width="200"></td>
+        <td><img src="./screenshot/z3477005704441_a67f123a78228c5b79d7df835d417f2a.jpg" alt="" width="200"></td>
+        <td><img src="./screenshot/z3477005710116_403df48b31e59b19ab0e83e647712ded.jpg" alt="" width="200"></td>
+    <tr>
+</table>
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
