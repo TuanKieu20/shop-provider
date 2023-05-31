@@ -1,10 +1,11 @@
-# Shop Provider | TuanKieu
-
+# Shop Online | TuanKieu
+Project use state management is Provider
 ## Flutter
 
-- Flutter provider
-- firebase
-- http
+- Flutter 
+- Provider
+- Firebase
+- Http
 
 ## Author Design
 [(https://www.figma.com/file/hN3sTQ6cUjnVkrt894LH6Y/Clothing-mobile-shop-(Community)?node-id=209%3A1823)]
